@@ -36,8 +36,8 @@ public class GLRenderer extends GLSurfaceView.Renderer {
 		gl.glMatrixMode(GL10.GL_MODELVIEW);
 		gl.glLoadIdentity();
 		gl.glTranslatef(0, 0, -3.0f);
-		gl.glRotatef(mAngleX, 0, 1, 0);
-		gl.glRotatef(mAngleY, 1, 0, 0);
+		gl.glRotatef(0, 0, 1, 0);
+		gl.glRotatef(0, 1, 0, 0);
 		
 		gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
 		gl.glEnableClientState(GL10.GL_COLOR_ARRAY);
