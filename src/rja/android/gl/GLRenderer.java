@@ -2,6 +2,7 @@ package rja.android.gl;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import android.opengl.GLSurfaceView;
+import javax.microedition.khronos.opengles.GL10;
 
 /**
  * Describe class GLRenderer here.
@@ -33,14 +34,17 @@ public class GLRenderer extends GLSurfaceView.Renderer {
 		 * Now we're ready to draw some 3D objects
 		 */
 		
-		gl.glMatrixMode(GL10.GL_MODELVIEW);
-		gl.glLoadIdentity();
-		gl.glTranslatef(0, 0, -3.0f);
-		gl.glRotatef(0, 0, 1, 0);
-		gl.glRotatef(0, 1, 0, 0);
-		
-		gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
-		gl.glEnableClientState(GL10.GL_COLOR_ARRAY);
+		// gl.glMatrixMode(GL10.GL_MODELVIEW);
+		// gl.glLoadIdentity();
+		// gl.glTranslatef(0, 0, -3.0f);
+		// gl.glRotatef(0, 0, 1, 0);
+		// gl.glRotatef(0, 1, 0, 0);
+		// 
+		// gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
+		// gl.glEnableClientState(GL10.GL_COLOR_ARRAY);
+
+		gl.glColor4f(1.0, 1.0, 1.0, 1.0);
+		gl.glOrthof(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
 		
 		figure.draw(gl);
 	}
