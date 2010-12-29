@@ -13,9 +13,11 @@ import javax.microedition.khronos.opengles.GL10;
  * @author <a href="mailto:rajeshja@D-174758"></a>
  * @version 1.0
  */
-public class GLRenderer extends GLSurfaceView.Renderer {
+public class GLRenderer implements GLSurfaceView.Renderer {
 
 	private GLFigure figure;
+	public float angleX;
+	public float angleY;
 
 	public GLRenderer() {
 		figure = new GLFigure();
@@ -34,17 +36,17 @@ public class GLRenderer extends GLSurfaceView.Renderer {
 		 * Now we're ready to draw some 3D objects
 		 */
 		
-		// gl.glMatrixMode(GL10.GL_MODELVIEW);
-		// gl.glLoadIdentity();
-		// gl.glTranslatef(0, 0, -3.0f);
-		// gl.glRotatef(0, 0, 1, 0);
-		// gl.glRotatef(0, 1, 0, 0);
-		// 
-		// gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
-		// gl.glEnableClientState(GL10.GL_COLOR_ARRAY);
+		gl.glMatrixMode(GL10.GL_MODELVIEW);
+		gl.glLoadIdentity();
+		gl.glTranslatef(0, 0, -3.0f);
+		gl.glRotatef(angleX, 0, 1, 0);
+		gl.glRotatef(angleY, 1, 0, 0);
+		
+		gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
+		gl.glEnableClientState(GL10.GL_COLOR_ARRAY);
 
-		gl.glColor4f(1.0, 1.0, 1.0, 1.0);
-		gl.glOrthof(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
+		//gl.glColor4f(1.0, 1.0, 1.0, 1.0);
+		//gl.glOrthof(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
 		
 		figure.draw(gl);
 	}

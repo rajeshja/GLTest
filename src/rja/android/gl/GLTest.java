@@ -13,5 +13,8 @@ public class GLTest extends Activity
 
 		GLView glView = new GLView(this);
         setContentView(glView);
+
+		glView.requestFocus();
+		glView.setFocusableInTouchMode(true);
     }
 }
