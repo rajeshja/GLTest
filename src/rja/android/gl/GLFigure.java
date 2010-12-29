@@ -74,6 +74,6 @@ public class GLFigure {
         gl.glFrontFace(gl.GL_CW);
         gl.glVertexPointer(3, gl.GL_FIXED, 0, mVertexBuffer);
         gl.glColorPointer(4, gl.GL_FIXED, 0, mColorBuffer);
-        gl.glDrawElements(gl.GL_TRIANGLE_STRIP, 36, gl.GL_UNSIGNED_BYTE, mIndexBuffer);
+        gl.glDrawElements(gl.GL_TRIANGLE_STRIP, 9, gl.GL_UNSIGNED_BYTE, mIndexBuffer);
     }
 }
