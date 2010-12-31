@@ -16,6 +16,7 @@ import javax.microedition.khronos.opengles.GL10;
 public class GLRenderer implements GLSurfaceView.Renderer {
 
 	private GLFigure figure;
+
 	public float angleX;
 	public float angleY;
 
@@ -87,6 +88,8 @@ public class GLRenderer implements GLSurfaceView.Renderer {
 		gl.glShadeModel(GL10.GL_SMOOTH);
 		gl.glEnable(GL10.GL_DEPTH_TEST);
 	}
-	
 
+	public GLFigure getFigure() {
+		return figure;
+	}
 }

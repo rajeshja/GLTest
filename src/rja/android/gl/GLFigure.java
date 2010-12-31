@@ -11,6 +11,10 @@ public class GLFigure {
     private IntBuffer   mColorBuffer;
     private ByteBuffer  mIndexBuffer;
 
+	private int pointsToDraw = 6;
+
+	private boolean cullBackSurface = false;
+
 	public GLFigure() {
         int one = 0x10000;
         int vertices[] = {
@@ -69,11 +73,46 @@ public class GLFigure {
         mIndexBuffer.position(0);
     }
 
-    public void draw(GL10 gl)
-    {
+    public void draw(GL10 gl) {
         gl.glFrontFace(gl.GL_CW);
+
+		if (cullBackSurface) {
+			gl.glEnable(gl.GL_CULL_FACE);
+		} else {
+			gl.glDisable(gl.GL_CULL_FACE);
+		}
+
         gl.glVertexPointer(3, gl.GL_FIXED, 0, mVertexBuffer);
         gl.glColorPointer(4, gl.GL_FIXED, 0, mColorBuffer);
-        gl.glDrawElements(gl.GL_TRIANGLE_STRIP, 9, gl.GL_UNSIGNED_BYTE, mIndexBuffer);
+        gl.glDrawElements(gl.GL_TRIANGLES, pointsToDraw, gl.GL_UNSIGNED_BYTE, mIndexBuffer);
     }
+
+	public int getPointsToDraw() {
+		return pointsToDraw;
+	}
+
+	public void setPointsToDraw(int pointsToDraw) {
+		this.pointsToDraw = pointsToDraw;
+	}
+
+	public void incrementTriangles() {
+		if (pointsToDraw <= 33) {
+			pointsToDraw += 3;
+		}
+
+		if (pointsToDraw >= 36) {
+			cullBackSurface = true;
+		}
+	}
+
+	public void decrementTriangles() {
+
+		if (pointsToDraw >= 3) {
+			pointsToDraw -= 3;
+		}
+
+		if (pointsToDraw < 36) {
+			cullBackSurface = false;
+		}
+	}
 }
