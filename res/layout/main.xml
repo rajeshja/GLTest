@@ -4,12 +4,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-	<rja.android.gl.GLView
-			android:id="@+id/gl_view"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:layout_above="@id/customer_id"
-			/>
 	<LinearLayout
 			android:id="@+id/controls"
 			android:orientation="horizontal"
@@ -32,5 +26,11 @@
 				>
 		</Button>
 	</LinearLayout>	
+	<rja.android.gl.GLView
+			android:id="@+id/gl_view"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_above="@id/controls"
+			/>
 </RelativeLayout>
 
