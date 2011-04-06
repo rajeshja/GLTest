@@ -43,9 +43,6 @@ public class GLRenderer implements GLSurfaceView.Renderer {
 		gl.glRotatef(angleX, 0, 1, 0);
 		gl.glRotatef(angleY, 1, 0, 0);
 		
-		gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
-		gl.glEnableClientState(GL10.GL_COLOR_ARRAY);
-
 		//gl.glColor4f(1.0, 1.0, 1.0, 1.0);
 		//gl.glOrthof(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
 		
@@ -73,7 +70,7 @@ public class GLRenderer implements GLSurfaceView.Renderer {
 		 * but reduce performance. One might want to tweak that
 		 * especially on software renderer.
 		 */
-		gl.glDisable(GL10.GL_DITHER);
+		//gl.glDisable(GL10.GL_DITHER);
 		
 		/*
 		 * Some one-time OpenGL initialization can be made here
@@ -83,7 +80,7 @@ public class GLRenderer implements GLSurfaceView.Renderer {
 				  GL10.GL_FASTEST);
 		
 		
-		gl.glClearColor(1,1,1,1);
+		gl.glClearColor(0.5f,0.5f,0.5f,0.5f);
 		gl.glEnable(GL10.GL_CULL_FACE);
 		gl.glShadeModel(GL10.GL_SMOOTH);
 		gl.glEnable(GL10.GL_DEPTH_TEST);
