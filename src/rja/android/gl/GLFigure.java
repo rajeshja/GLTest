@@ -26,26 +26,62 @@ public class GLFigure {
                 one, -one,  one,
                 one,  one,  one,
                 -one,  one,  one,
+
+                -one, -one, -one,
+                one, -one, -one,
+                one,  one, -one,
+                -one,  one, -one,
+                -one, -one,  one,
+                one, -one,  one,
+                one,  one,  one,
+                -one,  one,  one,
+
+                -one, -one, -one,
+                one, -one, -one,
+                one,  one, -one,
+                -one,  one, -one,
+                -one, -one,  one,
+                one, -one,  one,
+                one,  one,  one,
+                -one,  one,  one,
         };
 
         int colors[] = {
-                0,    0,    0,  one,
-                one,    0,    0,  one,
-                one,  one,    0,  one,
-                0,  one,    0,  one,
-                0,    0,  one,  one,
-                one,    0,  one,  one,
-                one,  one,  one,  one,
-                0,  one,  one,  one,
-        };
+			one,    0,    0,  one, // Red
+			one,    0,    0,  one, // Red
+			0,  one,    0,  one, // Green
+			0,  one,    0,  one, // Green
+			one,    0,    0,  one, // Red
+			one,    0,    0,  one, // Red
+			0,  one,    0,  one, // Green
+			0,  one,    0,  one, // Green
+			
+			0,    0,  one,  one, //Blue 
+			one,  one,    0,  one, // Yellow
+			one,  one,    0,  one, // Yellow
+			0,    0,  one,  one, //Blue 
+			0,    0,  one,  one, //Blue 
+			one,  one,    0,  one, // Yellow
+			one,  one,    0,  one, // Yellow
+			0,    0,  one,  one, //Blue 
+			
+			0,  one,  one,  one, // Cyan
+			0,  one,  one,  one, // Cyan
+			0,  one,  one,  one, // Cyan
+			0,  one,  one,  one, // Cyan
+			one,    0,  one,  one, // Magenta
+			one,    0,  one,  one, // Magenta
+			one,    0,  one,  one, // Magenta
+			one,    0,  one,  one, // Magenta
+		};
 
         byte indices[] = {
-                0, 4, 5,    0, 5, 1,
-                1, 5, 6,    1, 6, 2,
-                2, 6, 7,    2, 7, 3,
-                3, 7, 4,    3, 4, 0,
-                4, 7, 6,    4, 6, 5,
-                3, 0, 1,    3, 1, 2
+			0      , 4      , 5      ,   0      ,  5     , 1      , // Red
+			1+   8 , 5+   8 , 6+   8 ,   1+   8 ,  6+  8 , 2+   8 , // Yellow
+            2      , 6      , 7      ,   2      ,  7     , 3      , // Green
+            3+(1*8), 7+(1*8), 4+(1*8),   3+(1*8), 4+(1*8), 0+(1*8), // Blue
+            4+(2*8), 7+(2*8), 6+(2*8),   4+(2*8), 6+(2*8), 5+(2*8), // Magenta
+            3+(2*8), 0+(2*8), 1+(2*8),   3+(2*8), 1+(2*8), 2+(2*8)  // Cyan
         };
 
         // Buffers to be passed to gl*Pointer() functions
