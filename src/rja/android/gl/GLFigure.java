@@ -9,6 +9,7 @@ public class GLFigure {
 
     private IntBuffer   mVertexBuffer;
     private IntBuffer   mColorBuffer;
+    private IntBuffer   mNormalBuffer;
     private ByteBuffer  mIndexBuffer;
 
 	private int pointsToDraw = 6;
@@ -17,6 +18,7 @@ public class GLFigure {
 
 	public GLFigure() {
         int one = 0x10000;
+        int onePointOne = 0x11000;
         int vertices[] = {
                 -one, -one, -one,
                 one, -one, -one,
@@ -75,6 +77,21 @@ public class GLFigure {
 			one,    0,  one,  one, // Magenta
 		};
 
+		int normals[] = {
+			one, -one, 0, one, -one, 0, one, -one, 0,
+			0, -one, 0, 0, -one, 0, 0, -one, 0,
+			one, 0, 0, one, 0, 0, one, 0, 0,
+			one, 0, 0, one, 0, 0, one, 0, 0,
+			0, one, 0, 0, one, 0, 0, one, 0,
+			0, one, 0, 0, one, 0, 0, one, 0,
+			-one, 0, 0, -one, 0, 0, -one, 0, 0,
+			-one, 0, 0, -one, 0, 0, -one, 0, 0,
+			0, 0, one, 0, 0, one, 0, 0, one,
+			0, 0, one, 0, 0, one, 0, 0, one,
+			0, 0, -one, 0, 0, -one, 0, 0, -one,
+			0, 0, -one, 0, 0, -one, 0, 0, -one,
+		};
+
         byte indices[] = {
 			0      , 4      , 5      ,   0      ,  5     , 1      , // Red
 			1+   8 , 5+   8 , 6+   8 ,   1+   8 ,  6+  8 , 2+   8 , // Yellow
@@ -104,6 +121,12 @@ public class GLFigure {
         mColorBuffer.put(colors);
         mColorBuffer.position(0);
 
+        ByteBuffer nbb = ByteBuffer.allocateDirect(normals.length*4);
+        nbb.order(ByteOrder.nativeOrder());
+        mNormalBuffer = nbb.asIntBuffer();
+        mNormalBuffer.put(normals);
+        mNormalBuffer.position(0);
+
         mIndexBuffer = ByteBuffer.allocateDirect(indices.length);
         mIndexBuffer.put(indices);
         mIndexBuffer.position(0);
@@ -118,9 +141,18 @@ public class GLFigure {
 			gl.glDisable(gl.GL_CULL_FACE);
 		}
 
+		gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
+		gl.glEnableClientState(GL10.GL_COLOR_ARRAY);
+		gl.glEnableClientState(GL10.GL_NORMAL_ARRAY);
+
         gl.glVertexPointer(3, gl.GL_FIXED, 0, mVertexBuffer);
         gl.glColorPointer(4, gl.GL_FIXED, 0, mColorBuffer);
+        gl.glNormalPointer(3, gl.GL_FIXED, mNormalBuffer);
         gl.glDrawElements(gl.GL_TRIANGLES, pointsToDraw, gl.GL_UNSIGNED_BYTE, mIndexBuffer);
+
+		gl.glDisableClientState(GL10.GL_VERTEX_ARRAY);
+		gl.glDisableClientState(GL10.GL_COLOR_ARRAY);
+		gl.glDisableClientState(GL10.GL_NORMAL_ARRAY);
     }
 
 	public int getPointsToDraw() {
